@@ -52,9 +52,14 @@ document.getElementById('expressDelivery').addEventListener('click' , function()
 document.getElementById('apply').addEventListener('click', function(){
     const pomoCodeField = document.getElementById('pomoCode');
     let pomoCode = pomoCodeField.value;
-    if(pomoCode == 'stevekaku'){
-        pomoCode =  totalPrice - totalPrice * 0.2;
-    }
-
-});
+    
+        if (pomoCode == 'stevekaku') {
+            const discount = (parseInt(totalPrice.innerText * 20)) / 100;
+            document.getElementById('total').innerText = totalPrice - discount;
+        }
+        else {
+            alert("enter valid promo-code");
+        }
+        pomoCode.value = '';
+    });
 
