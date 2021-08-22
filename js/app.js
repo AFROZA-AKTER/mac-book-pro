@@ -16,8 +16,10 @@ function calculateTotal(){
     const memoryPrice = getInputValue('memory')
     const storagePrice = getInputValue('storage')
     const deliveryCharge = getInputValue('delivery')
-    const totalPrice = 1299 + memoryPrice + storagePrice + deliveryCharge;
+    const bestCost = getInputValue('best')
+    const totalPrice = bestCost + memoryPrice + storagePrice + deliveryCharge;
     document.getElementById('total').innerText = totalPrice;
+    return totalPrice;
     
 }
 //  calculate memory cost
@@ -48,18 +50,22 @@ document.getElementById('expressDelivery').addEventListener('click' , function()
 })
 
 // add pomo code
-
-document.getElementById('apply').addEventListener('click', function(){
+function quoponCode(){
+   debugger;
     const pomoCodeField = document.getElementById('pomoCode');
-    let pomoCode = pomoCodeField.value;
-    
-        if (pomoCode == 'stevekaku') {
-            const discount = (parseInt(totalPrice.innerText * 20)) / 100;
-            document.getElementById('total').innerText = totalPrice - discount;
-        }
-        else {
-            alert("enter valid promo-code");
-        }
-        pomoCode.value = '';
-    });
+    const pomoCode = pomoCodeField.value;
+    if (pomoCode == 'stevekaku') {
+        const totalPrice = calculateTotal();
+        const discount = (totalPrice * 20) / 100;
+        document.getElementById('totalCost').innerText = totalPrice - discount;
+    }
+    else {
+        alert("Wrong promo-code");
+    }
+    pomoCodeField.value = '';
+}
+  document.getElementById('apply').addEventListener('click' , function(){
+    quoponCode();
+ });
+
 
