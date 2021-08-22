@@ -51,7 +51,7 @@ document.getElementById('expressDelivery').addEventListener('click' , function()
 
 // add pomo code
 function quoponCode(){
-   debugger;
+   
     const pomoCodeField = document.getElementById('pomoCode');
     const pomoCode = pomoCodeField.value;
     if (pomoCode == 'stevekaku') {
